@@ -39,19 +39,24 @@ class Board {
     var lastPos = new Vector(xc, yc);
     var thisPos = new Vector(xc, yc);
     
+    num money = 0;
     drawBoard(thisPos);
     // Handles moves
     final Set controls = new Set.from(['Up', 'Down', 'Left', 'Right']);
     final Set commands = new Set.from(['U+001B', 'U+0020', 'U+00BF']);
     document.on.keyDown.add((Event e) {
       KeyboardEvent ke=e;
-      if (controls.contains(ke.keyIdentifier)) {
+      String keyId = ke.keyIdentifier;
+      if (controls.contains(keyId)) {
         // show(ke.keyIdentifier, alertClass: 'success');  
         lastPos = thisPos;
         thisPos = parseMove(ke.keyIdentifier, lastPos);
         drawBoard(thisPos);
+
       } else {
-        show(ke.keyIdentifier, alertClass: 'info');
+        money = money + keyId.length;
+        String moneyDisplay = "\$" + money.toString() + '.00';
+        show(moneyDisplay, alertClass: 'success');
         //clearShow(); 
       }
     }, true);

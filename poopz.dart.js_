@@ -739,10 +739,11 @@ Isolate.$defineClass("Board", "Object", ["yc", "xc", "ctx"], {
   this.ctx = canvas.getContext$1('2d');
   t0.lastPos_1 = $.Vector$2(this.xc, this.yc);
   t0.thisPos_2 = $.Vector$2(this.xc, this.yc);
+  t0.money_3 = 0;
   this.drawBoard$1(t0.thisPos_2);
   var controls = $.HashSetImplementation$from(['Up', 'Down', 'Left', 'Right']);
   $.HashSetImplementation$from(['U+001B', 'U+0020', 'U+00BF']);
-  $.document().get$on().get$keyDown().add$2(new $.Closure2(this, t0, controls), true);
+  $.document().get$on().get$keyDown().add$2(new $.Closure2(controls, t0, this), true);
  }
 });
 
@@ -1560,16 +1561,19 @@ Isolate.$defineClass("Closure", "Closure19", [], {
  }
 });
 
-Isolate.$defineClass("Closure2", "Closure19", ["this_4", "box_0", "controls_3"], {
+Isolate.$defineClass("Closure2", "Closure19", ["controls_5", "box_0", "this_4"], {
  $call$1: function(e) {
-  if ($.contains$1(this.controls_3, e.get$keyIdentifier()) === true) {
+  var keyId = e.get$keyIdentifier();
+  if ($.contains$1(this.controls_5, keyId) === true) {
     var lastPos = this.box_0.thisPos_2;
     this.box_0.lastPos_1 = lastPos;
     var thisPos = this.this_4.parseMove$2(e.get$keyIdentifier(), this.box_0.lastPos_1);
     this.box_0.thisPos_2 = thisPos;
     this.this_4.drawBoard$1(this.box_0.thisPos_2);
   } else {
-    $.show(e.get$keyIdentifier(), (void 0), 'info');
+    var money = $.add(this.box_0.money_3, $.get$length(keyId));
+    this.box_0.money_3 = money;
+    $.show($.add('$', $.toString(this.box_0.money_3)) + '.00', (void 0), 'success');
   }
  }
 });

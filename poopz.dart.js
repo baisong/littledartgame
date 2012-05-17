@@ -3336,18 +3336,22 @@ function Board() {
   this.ctx = canvas.getContext("2d");
   var lastPos = new Vector(this.xc, this.yc);
   var thisPos = new Vector(this.xc, this.yc);
+  var money = (0);
   this.drawBoard(thisPos);
   var controls = HashSetImplementation.HashSetImplementation$from$factory(["Up", "Down", "Left", "Right"]);
   var commands = HashSetImplementation.HashSetImplementation$from$factory(["U+001B", "U+0020", "U+00BF"]);
   get$$document().get$on().get$keyDown().add($wrap_call$1((function (e) {
     var ke = e;
-    if (controls.contains(ke.keyIdentifier)) {
+    var keyId = ke.keyIdentifier;
+    if (controls.contains(keyId)) {
       lastPos = thisPos;
       thisPos = $this.parseMove(ke.keyIdentifier, lastPos);
       $this.drawBoard(thisPos);
     }
     else {
-      show(ke.keyIdentifier, null, "info");
+      money = money + keyId.length;
+      var moneyDisplay = $add$($add$("$", money.toString()), ".00");
+      show(moneyDisplay, null, "success");
     }
   })
   ), true);
