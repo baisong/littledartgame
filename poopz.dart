@@ -3,7 +3,9 @@
 void main() {
   // Removes "dart is not running" alert box
   clearShow();
-  
+  window.setTimeout(() {
+    show('p!ng: move with arrow keys za~', alertClass: 'success');
+  }, 3000);
   // Starts a new game board and writes to #canvas.
   new Game();
   new Board();
@@ -49,7 +51,7 @@ class Board {
         thisPos = parseMove(ke.keyIdentifier, lastPos);
         drawBoard(thisPos);
       } else {
-        show(ke.keyIdentifier, alertClass: 'error');
+        show(ke.keyIdentifier, alertClass: 'info');
         //clearShow(); 
       }
     }, true);
