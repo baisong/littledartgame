@@ -3319,6 +3319,9 @@ _Lists.indexOf = function(a, element, startIndex, endIndex) {
   }
   return (-1);
 }
+function get$$window() {
+  return window;
+}
 function get$$document() {
   return document;
 }
@@ -3344,7 +3347,7 @@ function Board() {
       $this.drawBoard(thisPos);
     }
     else {
-      show(ke.keyIdentifier, null, "error");
+      show(ke.keyIdentifier, null, "info");
     }
   })
   ), true);
@@ -3420,6 +3423,10 @@ Game.prototype.processCommand = function(keyId) {
 }
 function main() {
   clearShow();
+  get$$window().setTimeout($wrap_call$0((function () {
+    show("p!ng: move with arrow keys za~", null, "success");
+  })
+  ), (3000));
   new Game();
   new Board();
 }
