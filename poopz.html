@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>poopz</title>
+    <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="poopz.css">
+  </head>
+  <body>
+  <div id="page" class="rounded">
+    <h1>poopz</h1>
+    <div id="game">
+      <div id="show">
+      	<div class="alert">
+          <h4 class="alert-heading">Loading...</h4>
+          <div class="alert-message"></div>
+      	</div>
+      </div>
+      <div class="image"></div>
+      <div class="center">
+        <canvas id="canvas" width="600" height="400"></canvas>
+      </div>
+      <div>
+        <input id="command" type="text" class="uneditable-input" value="type '/' to enter a command" size="300" />
+      </div>
+    </div>
+    <script type="application/dart" src="poopz.dart"></script>
+    <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>  </body>
+  </div>
+</html>

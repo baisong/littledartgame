@@ -1,0 +1,45 @@
+/* Copyright (c) 2011, the Dart project authors.  Please see the AUTHORS file */
+/* for details. All rights reserved. Use of this source code is governed by a */
+/* BSD-style license that can be found in the LICENSE file. */
+/** Add css rules here for your application. */
+html, body {
+	background-color: #eee;
+}
+
+#page {
+	border: 4px solid #ccc;
+	margin: 10px auto;
+	width: 960px;
+	padding: 10px;
+	background-color: white;
+	color: black;
+}
+
+.rounded {
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.display-none {
+	display: none;
+}
+
+.center {
+	text-align: center;
+}
+
+#game {
+	width:620px;
+	margin:10px auto;
+}
+
+#canvas {
+	border: 1px solid gray;
+	margin: 10px auto;
+}
+
+#command {
+	width: 100%;
+}
